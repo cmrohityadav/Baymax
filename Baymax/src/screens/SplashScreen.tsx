@@ -1,14 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native'
+/* eslint-disable react-native/no-inline-styles */
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
+import { navigate } from '../utils/NavigationUtils'
 
 const SplashScreen = () => {
+    
   return (
-    <View>
-      <Text>SplashScreen</Text>
+    <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
+        <TouchableOpacity
+        onPress={()=>navigate('BaymaxScreen')}
+        >
+            <Text>SplashScreen</Text>
+        </TouchableOpacity>
     </View>
   )
 }
 
 export default SplashScreen
-
-const styles = StyleSheet.create({})

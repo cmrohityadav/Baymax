@@ -1,14 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
  
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, StyleSheet, View } from 'react-native'
 import React, { FC, useEffect } from 'react'
-import { navigate } from '../utils/NavigationUtils'
+import {  resetAndNavigate } from '../utils/NavigationUtils'
 import { Colors, lightColors } from '../utils/Constants'
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
 import { screenHeight, screenWidth } from '../utils/Scaling'
 import LinearGradient from 'react-native-linear-gradient'
 import CustomText from '../components/global/CustomText'
 import LottieView from 'lottie-react-native'
+import { initializeTtsListeners } from '../utils/ttsListners'
+import Tts from 'react-native-tts'
 
 const bottomColors=[...lightColors].reverse();
 const SplashScreen:FC = () => {
@@ -22,12 +25,19 @@ const launchAnimation=async()=>{
     messageContainerAnimation.value=screenHeight*0.001;
 
     setTimeout(()=>{
-        baymaxAnimation.value=-screenHeight*0.01
+        baymaxAnimation.value=-screenHeight*0.01;
+        Tts.speak("Hello world! I am Baymax")
     },600)
+
+
+    setTimeout(()=>{
+      resetAndNavigate('BaymaxScreen');
+    },5000)
 
 }
 
 useEffect(()=>{
+  initializeTtsListeners();
     launchAnimation();
 },[])
 

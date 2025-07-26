@@ -1,7 +1,6 @@
-import { View, Text, TextStyle, StyleSheet } from 'react-native'
+import {  Text, TextStyle, StyleSheet } from 'react-native'
 import React, { FC } from 'react'
 import {RFValue} from 'react-native-responsive-fontsize'
-import { create } from 'react-native/types_generated/Libraries/ReactNative/ReactFabricPublicInstance/ReactNativeAttributePayload';
 import { Colors } from '../../utils/Constants';
 interface Props{
   varient?:

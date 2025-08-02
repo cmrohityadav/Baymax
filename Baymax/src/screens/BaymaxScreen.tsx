@@ -4,11 +4,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Colors } from '../utils/Constants'
 import Background from '../components/baymax/Background'
 import { Animated } from 'react-native'
+import Loading from '../components/baymax/Loading'
+import BigHero6 from '../components/baymax/BigHero6'
 
 const BaymaxScreen = () => {
 
   const [showInstructions,setShowInstruction]=useState(false);
-  const [showLoader,setShowLoader]=useState(false);
+  const [showLoader,setShowLoader]=useState(true);
   const [message,setShowMessage]=useState(false);
   const [showPedometer,setShowPedometer]=useState(false);
 
@@ -37,6 +39,19 @@ const BaymaxScreen = () => {
 
   return (
     <View style={styles.container}>
+
+      {
+        showLoader &&
+        <View style={styles.loaderContainer}>
+          <Loading/>
+        </View>
+      }
+
+
+      {
+        !showInstructions && 
+        <BigHero6 onPress={()=>{}} />
+      }
       <Background blurOpacity={blurOpacity}/>
     </View>
   )
@@ -52,6 +67,7 @@ const styles = StyleSheet.create({
     alignItems:'center',
   },
   loaderContainer:{
-    position:'absolute'
+    position:'absolute',
+    zIndex:2,
   }
 })
